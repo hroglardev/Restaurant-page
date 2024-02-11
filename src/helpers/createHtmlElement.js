@@ -8,4 +8,6 @@ export const createHtmlElement = (element, elementClasss, id) => {
   if (id) {
     domElement.id = id
   }
+
+  return domElement
 }

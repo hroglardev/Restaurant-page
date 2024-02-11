@@ -1,2 +1,6 @@
 'use strict'
-console.log('hello world!')
+import { displayHome } from './pages/home'
+import { displayForm } from './domElements/Form/form'
+
+displayForm()
+displayHome()
