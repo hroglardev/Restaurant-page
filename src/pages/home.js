@@ -1,4 +1,3 @@
-import { emptyContent } from '../helpers/emptyContent'
 import { createHtmlElement } from '../helpers/createHtmlElement'
 import { appendElements } from '../helpers/appendElements'
 import './home.css'
@@ -6,6 +5,8 @@ import qualityFoodImage from '../assets/qualityFood.jpg'
 import deliveryImage from '../assets/delivery.jpg'
 import openAllYearImage from '../assets/openAllYear.jpg'
 import localIngredientsImage from '../assets/localFood.jpg'
+import { setPage } from '../helpers/setPage'
+import { createImage } from '../helpers/createImage'
 
 const cards = [
   {
@@ -35,26 +36,15 @@ const cards = [
 ]
 
 export const displayHome = () => {
-  const content = document.querySelector('#content')
-  emptyContent(content)
-  const section = createHtmlElement('section', 'page', 'home')
-  appendElements(content, section)
-
-  const sectionTitle = createHtmlElement('h2')
-  sectionTitle.innerText = 'Why us?'
-  const cardContainer = createHtmlElement('div', 'card-container')
-  appendElements(section, sectionTitle, cardContainer)
+  const pageSection = setPage('home', 'Why us?', 'card-container')
 
   cards.forEach((card) => {
-    const algo = createHtmlElement('article', 'card')
-    const title = createHtmlElement('h3', 'card-title')
-    const image = createHtmlElement('img', 'card-image')
-    const text = createHtmlElement('p', 'card-text')
-    title.innerText = card.title
-    image.src = card.image
-    image.alt = card.alt
-    text.innerText = card.text
-    appendElements(cardContainer, algo)
-    appendElements(algo, title, image, text)
+    const homeCard = createHtmlElement('article', 'card')
+    const title = createHtmlElement('h3', 'card-title', '', card.title)
+    const image = createImage(card.image, card.alt, 'card-image')
+    const text = createHtmlElement('p', 'card-text', '', card.text)
+
+    appendElements(pageSection.container, homeCard)
+    appendElements(homeCard, title, image, text)
   })
 }

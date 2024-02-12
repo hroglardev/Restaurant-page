@@ -1,6 +1,7 @@
 import { appendElements } from '../helpers/appendElements'
 import { createHtmlElement } from '../helpers/createHtmlElement'
-import { emptyContent } from '../helpers/emptyContent'
+import { setPage } from '../helpers/setPage'
+
 import './menu.css'
 
 const menu = [
@@ -54,29 +55,19 @@ const menu = [
 ]
 
 export const displayMenu = () => {
-  const content = document.querySelector('#content')
-  emptyContent(content)
-  const section = createHtmlElement('section', 'page', 'our-menu')
-  appendElements(content, section)
-
-  const sectionTitle = createHtmlElement('h2')
-  sectionTitle.innerText = 'Our menu'
-  const menuContainer = createHtmlElement('div', 'menu-container')
-  appendElements(section, sectionTitle, menuContainer)
+  const pageSection = setPage('our-menu', 'Our menu', 'menu-container')
 
   menu.forEach((category) => {
     const categorySection = createHtmlElement('section', 'food-category')
-    const title = createHtmlElement('h3', 'food-title')
-    title.innerText = category.section
+    const title = createHtmlElement('h3', 'food-title', '', category.section)
     const itemList = createHtmlElement('ul', 'food-list')
-    appendElements(menuContainer, categorySection)
+    appendElements(pageSection.container, categorySection)
     appendElements(categorySection, title, itemList)
     category.items.forEach((item) => {
       const listItem = createHtmlElement('li', 'food-item')
-      const nameSpan = createHtmlElement('span', 'food-name')
-      const priceSpan = createHtmlElement('span', 'food-price')
-      nameSpan.innerText = `${item.name}`
-      priceSpan.innerText = `${item.price}`
+      const nameSpan = createHtmlElement('span', 'food-name', '', item.name)
+      const priceSpan = createHtmlElement('span', 'food-price', '', item.price)
+
       appendElements(itemList, listItem)
       appendElements(listItem, nameSpan, priceSpan)
     })

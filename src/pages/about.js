@@ -1,11 +1,12 @@
 import { appendElements } from '../helpers/appendElements'
 import { createHtmlElement } from '../helpers/createHtmlElement'
-import { emptyContent } from '../helpers/emptyContent'
 import firstImage from '../assets/1.restaurant-story.jpg'
 import secondImage from '../assets/2.restaurant-story.jpeg'
 import thirdImage from '../assets/3.restaurant-story.jpg'
 import fourthImage from '../assets/4.restaurant-story.jpg'
 import './about.css'
+import { setPage } from '../helpers/setPage'
+import { createImage } from '../helpers/createImage'
 
 const restaurantStory = {
   image: firstImage,
@@ -29,30 +30,17 @@ const restaurantImages = [
 ]
 
 export const displayAbout = () => {
-  const content = document.querySelector('#content')
-  emptyContent(content)
-  const section = createHtmlElement('section', 'page', 'about')
-  appendElements(content, section)
+  const pageSection = setPage('about', 'About us', 'story-container')
 
-  const sectionTitle = createHtmlElement('h2')
-  sectionTitle.innerText = 'About us'
-  const storyContainer = createHtmlElement('div', 'story-container')
-  appendElements(section, sectionTitle, storyContainer)
+  const image = createImage(restaurantStory.image, restaurantStory.alt, 'story-img')
+  const story = createHtmlElement('p', 'story-text', '', restaurantStory.text)
 
-  const image = createHtmlElement('img', 'story-img')
-  const story = createHtmlElement('p', 'story-text')
-  image.src = restaurantStory.image
-  image.alt = restaurantStory.alt
-  story.innerText = restaurantStory.text
-
-  appendElements(storyContainer, image, story)
+  appendElements(pageSection.container, image, story)
 
   const imagesContainer = createHtmlElement('div', 'restaurant-images-container')
-  appendElements(section, imagesContainer)
+  appendElements(pageSection.section, imagesContainer)
   restaurantImages.forEach((picture) => {
-    const restaurantImage = createHtmlElement('img', 'restaurant-image')
-    restaurantImage.src = picture.image
-    restaurantImage.alt = picture.alt
+    const restaurantImage = createImage(picture.image, picture.alt, 'restaurant-image')
     appendElements(imagesContainer, restaurantImage)
   })
 }

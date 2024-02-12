@@ -1,6 +1,6 @@
 'use strict'
 
-import { startPage } from './helpers/startPage'
+import { startApp } from './helpers/startApp'
 import './styles.css'
 
-startPage()
+startApp()
