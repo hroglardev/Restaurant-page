@@ -14,7 +14,7 @@ export const validate = (input) => {
   }
 
   if (input.id === 'phone' && !PHONE.test(input.value)) {
-    error = 'Must have + sign and contain at least 9 numbers'
+    error = 'Must have + sign and at least 9 numbers'
   }
 
   return error
@@ -33,8 +33,10 @@ export const updateError = (errorElement, input) => {
 
 export const activateButton = (button) => {
   const inputs = [...document.querySelectorAll('.form-input')]
-  let isValid = inputs.every((inputElement) => !inputElement.classList.contains('has-error') && inputElement.value !== '')
+  let isValid = inputs.every((inputElement) => !inputElement.classList.contains('input-error') && inputElement.value !== '')
   if (isValid) {
     button.removeAttribute('disabled')
+  } else {
+    button.setAttribute('disabled', true)
   }
 }

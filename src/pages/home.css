@@ -6,14 +6,14 @@
 }
 
 .card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 15px;
-  justify-items: center;
+  justify-content: space-around;
 }
 
 .card {
-  width: 250px;
+  width: 260px;
   border-radius: 10px;
   background-color: var(--secondary-color);
   display: grid;

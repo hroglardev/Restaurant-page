@@ -43,9 +43,13 @@ export const displayForm = () => {
   appendElements(form, fieldSet)
   appendElements(fieldSet, legend)
 
-  createFormSection('Name:', 'Lucas', 'name', fieldSet)
-  createFormSection('Email:', 'lucas.cubile@yahoo.com', 'email', fieldSet)
-  createFormSection('Phone:', '+54911685878', 'phone', fieldSet)
+  const firstDiv = createHtmlElement('div', 'form-section')
+  const secondDiv = createHtmlElement('div', 'form-section')
+  const thirdDiv = createHtmlElement('div', 'form-section')
+  appendElements(fieldSet, firstDiv, secondDiv, thirdDiv)
+  createFormSection('Name:', 'Lucas', 'name', firstDiv)
+  createFormSection('Email:', 'lucas.cubile@yahoo.com', 'email', secondDiv)
+  createFormSection('Phone:', '+54911685878', 'phone', thirdDiv)
 
   const submitButton = createHtmlElement('button', 'submit')
   submitButton.type = 'submit'
