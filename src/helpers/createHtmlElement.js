@@ -1,8 +1,8 @@
-export const createHtmlElement = (element, elementClasss, id) => {
+export const createHtmlElement = (element, elementClass, id) => {
   const domElement = document.createElement(element)
 
-  if (elementClasss) {
-    domElement.classList.add(elementClasss)
+  if (elementClass) {
+    domElement.classList.add(elementClass)
   }
 
   if (id) {

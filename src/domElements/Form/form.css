@@ -1,9 +1,11 @@
 .contact-form {
   display: grid;
   padding: 25px;
-  border: 1px solid red;
   border-radius: 8px;
   gap: 20px;
+  background-color: white;
+  border: 2px solid var(--accent-color);
+  height: 360px;
 }
 
 .input-wrapper {
@@ -22,11 +24,11 @@
   display: grid;
   place-content: center;
   outline: none;
-  border: 1px transparent;
+  border: 2px solid var(--accent-color);
 }
 
 .form-input.input-error {
-  border: 1px solid red;
+  border: 2px solid red;
 }
 
 .error-message {
@@ -42,13 +44,16 @@
   width: 100px;
   justify-self: center;
   border-radius: 10px;
-  border: 2px solid green;
   cursor: pointer;
   padding: 10px;
 }
 
+.submit:not([disabled]) {
+  background-color: var(--accent-color);
+}
+
 .submit:hover:not([disabled]) {
-  background-color: aqua;
+  background-color: var(--first-color);
 }
 
 .submit:disabled {

@@ -32,12 +32,14 @@ const thankYouMessage = (form, event, button) => {
 
 export const displayForm = () => {
   const aside = document.querySelector('#aside')
+  const contactSection = createHtmlElement('section', 'contact-us')
+  appendElements(aside, contactSection)
   const form = createHtmlElement('form', 'contact-form')
   const fieldSet = createHtmlElement('fieldset', 'input-wrapper')
   const legend = createHtmlElement('legend', 'form-title')
   legend.innerText = 'Contact us'
   form.setAttribute('novalidate', true)
-  appendElements(aside, form)
+  appendElements(contactSection, form)
   appendElements(form, fieldSet)
   appendElements(fieldSet, legend)
 
