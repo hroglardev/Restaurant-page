@@ -1,6 +1,7 @@
 import { emptyContent } from '../helpers/emptyContent'
 import { createHtmlElement } from '../helpers/createHtmlElement'
 import { appendElements } from '../helpers/appendElements'
+import './home.css'
 
 const cards = [
   {
@@ -28,7 +29,7 @@ const cards = [
 export const displayHome = () => {
   const content = document.querySelector('#content')
   emptyContent(content)
-  const section = createHtmlElement('section')
+  const section = createHtmlElement('section', 'home')
   appendElements(content, section)
 
   const sectionTitle = createHtmlElement('h2')
@@ -37,12 +38,14 @@ export const displayHome = () => {
   appendElements(section, sectionTitle, cardContainer)
 
   cards.forEach((card) => {
+    const algo = createHtmlElement('article', 'card')
     const title = createHtmlElement('h3', 'card-title')
     const image = createHtmlElement('img', 'card-image')
     const text = createHtmlElement('p', 'card-text')
     title.innerText = card.title
     image.src = card.image
     text.innerText = card.text
-    appendElements(cardContainer, title, image, text)
+    appendElements(cardContainer, algo)
+    appendElements(algo, title, image, text)
   })
 }

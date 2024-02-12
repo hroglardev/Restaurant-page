@@ -1,7 +1,7 @@
 import { appendElements } from '../../helpers/appendElements'
 import { createHtmlElement } from '../../helpers/createHtmlElement'
-
-// import { validate } from './validation'
+import { updateError, activateButton } from './validation'
+import './form.css'
 
 const createFormSection = (labelText, placeHolder, inputId, parentNode) => {
   const label = createHtmlElement('label', 'form-label')
@@ -13,17 +13,18 @@ const createFormSection = (labelText, placeHolder, inputId, parentNode) => {
 
   input.setAttribute('placeholder', placeHolder)
   input.name = inputId
-  // input.addEventListener('change', validate(input))
+  input.addEventListener('input', () => updateError(error, input))
 
-  // error.innerText = validate(input)
   appendElements(parentNode, label, input, error)
 }
 
-const thankYouMessage = (form, event) => {
+const thankYouMessage = (form, event, button) => {
   event.preventDefault()
   const message = createHtmlElement('p', 'thank-you')
   message.innerText = 'Thank you. We will contact you soon'
   appendElements(form, message)
+  form.reset()
+  button.setAttribute('disabled', true)
   setTimeout(() => {
     message.remove()
   }, 3000)
@@ -31,19 +32,25 @@ const thankYouMessage = (form, event) => {
 
 export const displayForm = () => {
   const aside = document.querySelector('#aside')
-  const form = createHtmlElement('form')
+  const form = createHtmlElement('form', 'contact-form')
+  const fieldSet = createHtmlElement('fieldset', 'input-wrapper')
+  const legend = createHtmlElement('legend', 'form-title')
+  legend.innerText = 'Contact us'
+  form.setAttribute('novalidate', true)
   appendElements(aside, form)
+  appendElements(form, fieldSet)
+  appendElements(fieldSet, legend)
 
-  createFormSection('Name:', 'Lucas', 'name', form)
-  createFormSection('Email:', 'lucas.cubile@yahoo.com', 'email', form)
-  createFormSection('Phone:', '+54911685878', 'phone', form)
+  createFormSection('Name:', 'Lucas', 'name', fieldSet)
+  createFormSection('Email:', 'lucas.cubile@yahoo.com', 'email', fieldSet)
+  createFormSection('Phone:', '+54911685878', 'phone', fieldSet)
 
-  const inputs = [...document.querySelectorAll('.form-input')]
   const submitButton = createHtmlElement('button', 'submit')
   submitButton.type = 'submit'
   submitButton.innerText = 'Send'
   submitButton.setAttribute('disabled', true)
   appendElements(form, submitButton)
 
-  form.addEventListener('submit', (event) => thankYouMessage(form, event))
+  form.addEventListener('submit', (event) => thankYouMessage(form, event, submitButton))
+  form.addEventListener('input', () => activateButton(submitButton))
 }

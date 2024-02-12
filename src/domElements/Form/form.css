@@ -1,0 +1,57 @@
+.contact-form {
+  display: grid;
+  padding: 25px;
+  border: 1px solid red;
+  border-radius: 8px;
+  gap: 20px;
+}
+
+.input-wrapper {
+  display: grid;
+  border: none;
+  gap: 10px;
+}
+
+.form-title {
+  margin-bottom: 15px;
+}
+
+.form-input {
+  border-radius: 10px;
+  padding: 6px;
+  display: grid;
+  place-content: center;
+  outline: none;
+  border: 1px transparent;
+}
+
+.form-input.input-error {
+  border: 1px solid red;
+}
+
+.error-message {
+  font-size: 0.6rem;
+  position: relative;
+}
+
+.error-message.has-error {
+  color: red;
+}
+
+.submit {
+  width: 100px;
+  justify-self: center;
+  border-radius: 10px;
+  border: 2px solid green;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.submit:hover:not([disabled]) {
+  background-color: aqua;
+}
+
+.submit:disabled {
+  border: none;
+  cursor: not-allowed;
+}
