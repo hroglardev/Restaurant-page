@@ -48,17 +48,18 @@ const restaurantSchedule = [
 export const displaySchedule = () => {
   const aside = document.querySelector('#aside')
   const scheduleSection = createHtmlElement('section', 'our-times')
-  const title = createHtmlElement('h4', 'our-hours')
-  title.innerText = 'Our times'
+  const title = createHtmlElement('h4', 'our-hours', '', 'Our times')
   appendElements(aside, scheduleSection)
+
   const list = createHtmlElement('ul', 'schedule-list')
   appendElements(scheduleSection, title, list)
+
   restaurantSchedule.forEach((day) => {
     const listElement = createHtmlElement('li', 'day')
-    const nameDay = createHtmlElement('span', 'day-span')
+    const nameDay = createHtmlElement('span', 'day-span', '', day.day)
     const time = createHtmlElement('span', 'time-span')
-    nameDay.innerText = `${day.day}:`
     appendElements(listElement, nameDay, time)
+
     if (!day.isOpen) {
       time.innerText = 'Closed'
       appendElements(list, listElement)

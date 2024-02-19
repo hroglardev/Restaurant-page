@@ -1,4 +1,4 @@
-export const createHtmlElement = (element, elementClass = '', id = '', text = '') => {
+export const createHtmlElement = (element, elementClass, id, text = '') => {
   const domElement = document.createElement(element)
 
   if (elementClass) {
@@ -9,9 +9,7 @@ export const createHtmlElement = (element, elementClass = '', id = '', text = ''
     domElement.id = id
   }
 
-  if (text) {
-    domElement.innerText = text
-  }
+  domElement.innerText = text
 
   return domElement
 }
