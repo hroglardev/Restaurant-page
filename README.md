@@ -54,4 +54,5 @@ Checkout my other projects in order to see my evolution:
   <li><a href="https://github.com/hroglardev/Library" target="_blank">Library</a></li>
   <li><a href="https://github.com/hroglardev/Tic-tac-toe" target="_blank">Tic-tac-toe</a></li>
   <li><a href="https://github.com/hroglardev/Restaurant-page" target="_blank">You are here</a></li>
+  <li><a href="https://github.com/hroglardev/To-do-list-js" target="_blank">To-do list</a></li>
 </ol>
