@@ -32,7 +32,7 @@ It displays a navigation menu to alternate between pages (default to home when u
 
 Despite the form not submitting to anything, it is valdidated to make sure all inputs are filled.
 
-<img src="./docs-images/1-landing.JPG.JPG"/>
+<img src="./docs-images/1-landing.JPG"/>
 
 # Want to track my progress?
 
